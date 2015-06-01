@@ -6,6 +6,8 @@ DIR=/var/www/directus/public
 
 get_directus(){
   if [ ! -d "$DIR/.git" ]; then
+    # can't git clone on a non-empty directory
+    rm -rf $DIR/.gitkeep
     git clone https://github.com/RNGR/Directus.git $DIR
     pushd $DIR/api
       composer install
