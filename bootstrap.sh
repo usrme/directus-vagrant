@@ -1,23 +1,26 @@
 #!/usr/bin/env bash
 
 # Directus installation path
-DIR=/var/www/directus/public
+DIR=/var/www/html
+PROJECT_NAME='directus'
+PROJECT_DIR="$DIR/$PROJECT_NAME"
 
+# make directus directory
+sudo mkdir $PROJECT_DIR
 
 get_directus(){
   if [ ! -d "$DIR/.git" ]; then
     # can't git clone on a non-empty directory
-    rm -rf $DIR/.gitkeep
-    git clone https://github.com/RNGR/Directus.git $DIR
-    pushd $DIR/api
+    git clone https://github.com/RNGR/Directus.git $PROJECT_DIR
+    pushd $PROJECT_DIR/api
       composer install
     popd
   fi
 }
 
 install_directus() {
-  DIRECTUS_CLI=$DIR/bin/directus
-  php $DIRECTUS_CLI config -h=localhost -u=root -p=root -n=directus
+  DIRECTUS_CLI=$PROJECT_DIR/bin/directus
+  php $DIRECTUS_CLI config -h=localhost -u=root -p=123 -n=directus
   php $DIRECTUS_CLI database
   php $DIRECTUS_CLI install -e=admin@admin.com -p=admin -t="Directus Demo"
 }
