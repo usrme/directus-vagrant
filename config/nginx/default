@@ -25,9 +25,10 @@ server {
 		add_header Content-Type text/plain;
 	}
 
-	location ~* [^/]+/api\.php$ {
-		return 403;
-	}
+	# Not quite as expected
+	# location ~* [^/]+/api\.php$ {
+	#	return 403;
+	# }
 
 	error_page 404 /404.html;
 
