@@ -25,10 +25,10 @@ server {
 		add_header Content-Type text/plain;
 	}
 
-	# Not quite as expected
-	# location ~* [^/]+/api\.php$ {
-	#	return 403;
-	# }
+	# Not direct access to extension api file
+	location ~* [^/]+/extensions/api\.php$ {
+		return 403;
+	}
 
 	error_page 404 /404.html;
 
