@@ -19,7 +19,7 @@ git clone https://github.com/RNGR/directus-vagrant.git
 Or download the [zip file](https://github.com/RNGR/directus-vagrant/archive/master.zip)
 
 ```
-$ cd [vagrant dir]
+$ cd Directus-Vagrant
 $ vagrant up
 ```
 
