@@ -13,13 +13,13 @@
 Clone our Vagrant configuration:
 
 ```
-git clone https://github.com/RNGR/directus-vagrant.git
+git clone https://github.com/directus/directus-vagrant.git
 ```
 
-Or download the [zip file](https://github.com/RNGR/directus-vagrant/archive/master.zip)
+Or download the [zip file](https://github.com/directus/directus-vagrant/archive/master.zip)
 
 ```
-$ cd Directus-Vagrant
+$ cd directus-vagrant
 $ vagrant up
 ```
 
