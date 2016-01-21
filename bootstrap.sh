@@ -11,7 +11,7 @@ sudo mkdir $PROJECT_DIR
 get_directus(){
   if [ ! -d "$DIR/.git" ]; then
     # can't git clone on a non-empty directory
-    git clone https://github.com/RNGR/Directus.git $PROJECT_DIR
+    git clone https://github.com/directus/directus.git $PROJECT_DIR
     pushd $PROJECT_DIR/api
       composer install
     popd
