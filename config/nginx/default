@@ -26,8 +26,12 @@ server {
 	}
 
 	# Not direct access to extension api file
-	location ~* [^/]+/extensions/api\.php$ {
+	location ~* [^/]+/customs/extensions/api\.php$ {
 		return 403;
+	}
+
+	location ~* /customs {
+		deny all;
 	}
 
 	error_page 404 /404.html;
