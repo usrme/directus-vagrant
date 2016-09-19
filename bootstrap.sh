@@ -9,7 +9,7 @@ PROJECT_DIR="$DIR/$PROJECT_NAME"
 sudo mkdir $PROJECT_DIR
 
 get_directus(){
-  if [ ! -d "$DIR/.git" ]; then
+  if [ ! -d "$PROJECT_DIR/.git" ]; then
     # can't git clone on a non-empty directory
     git clone https://github.com/directus/directus.git $PROJECT_DIR
     pushd $PROJECT_DIR
