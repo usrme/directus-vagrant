@@ -25,12 +25,13 @@ server {
 		add_header Content-Type text/plain;
 	}
 
-	# Not direct access to extension api file
+	# No direct access to extension api file
 	location ~* [^/]+/customs/extensions/api\.php$ {
 		return 403;
 	}
 
-	location ~* /customs {
+	# No direct access to customs api endpoints files
+	location ~* /customs/endpoints/ {
 		deny all;
 	}
 
