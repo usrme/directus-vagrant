@@ -42,7 +42,7 @@ $ vagrant up
 - Database name: **directus**
 - MySQL user: **root**, pass: **123**
 
-The server now can be access from:
+The server can be access from:
 ```
 http://192.168.33.6
 ```
