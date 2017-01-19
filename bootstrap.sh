@@ -25,5 +25,8 @@ install_directus() {
   php $DIRECTUS_CLI install:install -e admin@admin.com -p admin -t "Directus Demo"
 }
 
+apt-get update
+composer self-update
+
 get_directus
 install_directus
