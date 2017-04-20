@@ -62,4 +62,6 @@ server {
 	location ~ /\.ht {
 		deny all;
 	}
+
+	include pagespeed.conf;
 }
