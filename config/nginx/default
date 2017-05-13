@@ -11,7 +11,7 @@ server {
 
 	location /api {
 		if (!-e $request_filename) {
-			rewrite ^/1/extensions/([^/]+) /api/api.php?run_extension=$1 last;
+			rewrite ^/extensions/([^/]+) /api/api.php?run_extension=$1 last;
 		}
 		rewrite ^ /api/api.php?run_api_router=1 last;
 	}
