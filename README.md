@@ -4,11 +4,11 @@
 
 # Directus Vagrant box
 
-##Requirements
+## Requirements
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - [Vagrant](https://www.vagrantup.com/downloads.html)
 
-##Installation
+## Installation
 
 [Download and install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
