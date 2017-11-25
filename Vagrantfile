@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
 
-    config.vm.box = "directus"
-    config.vm.box_url = "https://demo.getdirectus.com/vagrant/directus"
+    config.vm.box = "getdirectus/directus"
+    config.vm.box_version = "0.2.1"
     config.vm.network "private_network", ip: "192.168.33.6"
     config.vm.hostname = "directusdemo"
 
