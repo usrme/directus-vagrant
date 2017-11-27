@@ -22,7 +22,7 @@ install_directus() {
   DIRECTUS_CLI=$PROJECT_DIR/bin/directus
   php $DIRECTUS_CLI install:config -h localhost -u root -p 123 -n directus
   php $DIRECTUS_CLI install:database
-  php $DIRECTUS_CLI install:install -e admin@admin.com -p admin -t "Directus Demo"
+  php $DIRECTUS_CLI install:install -e admin@getdirectus.com -p password -t "Directus Demo"
 }
 
 apt-get update
