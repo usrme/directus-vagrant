@@ -38,7 +38,9 @@ $ vagrant up
 
 ## Info
 - Server IP: **192.168.33.6**
-- Directus user: **admin@getdirectus.com** pass: **password**
+- Directus credentials:
+    - Email: **admin@getdirectus.com**
+    - Password: **password**
 - Database name: **directus**
 - MySQL user: **root**, pass: **123**
 
