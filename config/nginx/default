@@ -9,9 +9,10 @@ server {
 	server_name localhost;
 	sendfile off;
 
+
 	location /api {
 		if (!-e $request_filename) {
-			rewrite ^/extensions/([^/]+) /api/api.php?run_extension=$1 last;
+			rewrite ^/api/extensions/([^/]+) /api/api.php?run_extension=$1 last;
 		}
 		rewrite ^ /api/api.php?run_api_router=1 last;
 	}
