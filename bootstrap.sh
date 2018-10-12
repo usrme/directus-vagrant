@@ -16,6 +16,12 @@ get_directus() {
 
     if [ -n "$PROJECT_VERS" ]; then
       DOWNLOAD_CMD="${DOWNLOAD_CMD}/${PROJECT_VERS}"
+    else
+      LATEST_VERS=$(curl -s https://api.github.com/repos/${PROJECT_NAME}/${PROJECT_NAME}/releases/latest |
+        grep 'tag_name' |
+        cut -d '"' -f4
+        )
+      DOWNLOAD_CMD="${DOWNLOAD_CMD}/${LATEST_VERS}"
     fi
 
     # Don't double quote as it needs to execute the command stored within
@@ -31,9 +37,9 @@ get_directus() {
 
 install_directus() {
   DIRECTUS_CLI="${PROJECT_DIR}/bin/directus"
-  php "$DIRECTUS_CLI" install:config -h localhost -u root -p 123 -n directus
-  php "$DIRECTUS_CLI" install:database
-  php "$DIRECTUS_CLI" install:install -e admin@getdirectus.com -p password -t "Directus Demo"
+  php $DIRECTUS_CLI install:config -h localhost -u root -p 123 -n directus
+  php $DIRECTUS_CLI install:database
+  php $DIRECTUS_CLI install:install -e admin@getdirectus.com -p password -t "Directus Demo"
 }
 
 apt-get update
