@@ -11,28 +11,26 @@ PROJECT_VERS=''
 mkdir "$PROJECT_DIR"
 
 get_directus() {
-  if [ ! -d "${PROJECT_DIR}/.git" ]; then
-    DOWNLOAD_CMD="wget -O ${PROJECT_NAME}.tar.gz https://api.github.com/repos/${PROJECT_NAME}/${PROJECT_NAME}/tarball"
+  DOWNLOAD_CMD="wget -O ${PROJECT_NAME}.tar.gz https://api.github.com/repos/${PROJECT_NAME}/${PROJECT_NAME}/tarball"
 
-    if [ -n "$PROJECT_VERS" ]; then
-      DOWNLOAD_CMD="${DOWNLOAD_CMD}/${PROJECT_VERS}"
-    else
-      LATEST_VERS=$(curl -s https://api.github.com/repos/${PROJECT_NAME}/${PROJECT_NAME}/releases/latest |
-        grep 'tag_name' |
-        cut -d '"' -f4
-        )
-      DOWNLOAD_CMD="${DOWNLOAD_CMD}/${LATEST_VERS}"
-    fi
-
-    # Don't double quote as it needs to execute the command stored within
-    $DOWNLOAD_CMD
-
-    tar -xf "${PROJECT_NAME}.tar.gz" -C "$PROJECT_DIR" --strip 1
-
-    pushd "$PROJECT_DIR"
-      composer install
-    popd
+  if [ -n "$PROJECT_VERS" ]; then
+    DOWNLOAD_CMD="${DOWNLOAD_CMD}/${PROJECT_VERS}"
+  else
+    LATEST_VERS=$(curl -s https://api.github.com/repos/${PROJECT_NAME}/${PROJECT_NAME}/releases/latest |
+      grep 'tag_name' |
+      cut -d '"' -f4
+      )
+    DOWNLOAD_CMD="${DOWNLOAD_CMD}/${LATEST_VERS}"
   fi
+
+  # Don't double quote as it needs to execute the command stored within
+  $DOWNLOAD_CMD
+
+  tar -xf "${PROJECT_NAME}.tar.gz" -C "$PROJECT_DIR" --strip 1
+
+  pushd "$PROJECT_DIR"
+    composer install
+  popd
 }
 
 install_directus() {
