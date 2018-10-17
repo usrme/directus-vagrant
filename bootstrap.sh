@@ -3,20 +3,20 @@
 # Directus installation path
 DIR='/var/www/html'
 PROJECT_NAME='directus'
+ORG_NAME='directus'
+REPO_NAME='directus'
 PROJECT_DIR="$DIR/$PROJECT_NAME"
-# Leave empty for latest release or use specific
-# version number for release (e.g. '6.4.9')
-PROJECT_VERS=''
+PROJECT_VERS="$1"
 
 mkdir "$PROJECT_DIR"
 
 get_directus() {
-  DOWNLOAD_CMD="wget -O ${PROJECT_NAME}.tar.gz https://api.github.com/repos/${PROJECT_NAME}/${PROJECT_NAME}/tarball"
+  DOWNLOAD_CMD="wget -O ${PROJECT_NAME}.tar.gz https://api.github.com/repos/${ORG_NAME}/${REPO_NAME}/tarball"
 
-  if [ -n "$PROJECT_VERS" ]; then
-    DOWNLOAD_CMD="${DOWNLOAD_CMD}/${PROJECT_VERS}"
+  if [ -n "$1" ]; then
+    DOWNLOAD_CMD="${DOWNLOAD_CMD}/$1"
   else
-    LATEST_VERS=$(curl -s https://api.github.com/repos/${PROJECT_NAME}/${PROJECT_NAME}/releases/latest |
+    LATEST_VERS=$(curl -s https://api.github.com/repos/${ORG_NAME}/${REPO_NAME}/releases/latest |
       grep 'tag_name' |
       cut -d '"' -f4
       )
@@ -43,5 +43,5 @@ install_directus() {
 apt-get update
 composer self-update
 
-get_directus
+get_directus "$PROJECT_VERS"
 install_directus

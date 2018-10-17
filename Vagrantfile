@@ -5,14 +5,13 @@ Vagrant.configure("2") do |config|
     config.vm.network "private_network", ip: "192.168.33.6"
     config.vm.hostname = "directusdemo"
 
-    # Configure VirtualBox environment
     config.vm.provider :virtualbox do |v|
-        # Set memory to 1GB
         v.customize [ "modifyvm", :id, "--memory", 1024 ]
     end
- 
-    config.vm.provision :shell, path: "bootstrap.sh"
- 
-    config.vm.synced_folder "html/", "/var/www/html", :mount_options => ["dmode=777", "fmode=666"]
 
+    # Leave empty for latest release or use specific
+    # version number for release (e.g. '6.4.9')
+    project_version='6.4.9'
+    config.vm.provision :shell, path: "bootstrap.sh", :args => project_version
+    config.vm.synced_folder "html/", "/var/www/html", :mount_options => ["dmode=777", "fmode=666"]
 end
